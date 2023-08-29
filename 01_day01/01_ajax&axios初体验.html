@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p></p>
+  <!-- 使用axio函数能读取后端服务器上的数据 -->
+  <!-- 引入axios -->
+  <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+  <script>
+    // 使用axios读取数据
+    axios('http://hmajax.itheima.net/api/province').then(result => {
+      // console.log(result.data.list.join('</br>'));
+      document.querySelector('p').innerHTML = result.data.list.join('</br>')
+    })
+  </script>
+  
+</body>
+</html>
