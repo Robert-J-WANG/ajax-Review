@@ -11,6 +11,7 @@
 <body>
   <!-- 文件选择元素 -->
   <input type="file" class="upload">
+  <img src="" alt="" class="my-img">
 
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
   <script>
@@ -21,6 +22,25 @@
      *  3. 提交到服务器，获取图片url网址使用
     */
     
+    document.querySelector('.upload').addEventListener('change', (e) => {
+        // console.log(e.target.files[0])
+        const df=new FormData()
+        // console.log(df)
+        df.append('img', e.target.files[0])
+        // console.log(df)
+        axios({
+          url:'http://hmajax.itheima.net/api/uploadimg',
+          method:'POST',
+          data:df
+
+        }).then(res=>{
+          // console.log(res.data.data)
+          const imgUrl=res.data.data.url
+          // console.log(imgUrl)
+          document.querySelector('.my-img').src=imgUrl
+
+        })
+    })
   </script>
 </body>
 
